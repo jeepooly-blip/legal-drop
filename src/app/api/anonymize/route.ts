@@ -6,7 +6,7 @@ export async function POST(req: Request) {
     const { case_id } = await req.json()
     if (!case_id) return NextResponse.json({ error: 'case_id required' }, { status: 400 })
 
-    const supabase = createClient()
+    const supabase =  await createClient()
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
