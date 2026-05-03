@@ -32,5 +32,5 @@ export function checkPii(text: string): PiiResult {
     }
   })
 
-  return { found: matches.length > 0, matches: [...new Set(matches)], redacted }
-}
+return { found: matches.length > 0, matches: Array.from(new Set(matches)), redacted }
+
