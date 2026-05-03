@@ -13,15 +13,14 @@ export async function middleware(req: NextRequest) {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
-      cookies: {
-        getAll() { return req.cookies.getAll() },
-    setAll(list: any) {
-       list.forEach(({ name, value }: any) => req.cookies.set(name, value))
-// ...
-list.forEach(({ name, value, options }: any) => res.cookies.set(name, value, options))
-        },
-      },
-    }
+cookies: {
+  getAll() { return req.cookies.getAll() },
+  setAll(list: any) {
+    list.forEach(({ name, value }: any) => req.cookies.set(name, value))
+    res = NextResponse.next({ request: req })
+    list.forEach(({ name, value, options }: any) => res.cookies.set(name, value, options))
+  },
+}
   )
   const { data: { user } } = await supabase.auth.getUser()
   const path = req.nextUrl.pathname
