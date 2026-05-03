@@ -18,7 +18,7 @@ const ROLES = [
 
 export default function RegisterPage() {
   const router = useRouter()
-  const supabase = createClient()
+  const supabase =  await createClient()
   const [serverErr, setServerErr] = useState<string | null>(null)
   const { register, handleSubmit, watch, setValue, formState: { errors, isSubmitting } } = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
