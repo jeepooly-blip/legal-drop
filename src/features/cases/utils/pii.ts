@@ -1,6 +1,6 @@
 export interface PiiResult { found: boolean; matches: string[]; redacted: string }
 
-const PHONE_RX   = /(+?962|00962|0)?[789]d{7,8}/g
+const PHONE_RX = /(\+?962|00962|0)[789]\d{7,8}/g;
 const EMAIL_RX   = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}/g
 const NATID_RX   = /d{10}/g
 const AR_NAME_RX = /(محمد|أحمد|علي|خالد|عمر|يوسف|إبراهيم|عبدالله|سلمى|نور|ريم|ليلى|رانيا)/g
